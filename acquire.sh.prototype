@@ -1,0 +1,29 @@
+#!/bin/bash
+
+DATE=`date -Iseconds`
+
+CAM1="cam1/${DATE}_cam_1_wells.jpg"
+CAM2="cam2/${DATE}_cam_2_wells.jpg"
+TEMP="temperature/${DATE}_temperature_wells.dat"
+
+
+#CAM1
+#fswebcam --device /dev/video0  --jpeg 50 --set brightness=100 -r 1280x720 $CAM1
+fswebcam --device /dev/video0  --jpeg 50 -S 20 -r 1280x720 $CAM1
+rclone copy $CAM1 gdrive:cam1wells/
+cp $CAM1 cam1wells_recent.jpg
+rclone copy cam1wells_recent.jpg gdrive:
+
+#CAM1
+#fswebcam --device /dev/video2 --jpeg 50 --set brightness=100 -r 1280x720 $CAM2
+fswebcam --device /dev/video2 --jpeg 50 -S 20 -r 1280x720 $CAM2
+rclone copy $CAM2 gdrive:cam2wells/
+cp $CAM2 cam2wells_recent.jpg
+rclone copy cam2wells_recent.jpg gdrive:
+
+#temperature
+#TEMP_DATA=`python3 temp_and_humidity.py`
+#echo $DATE $TEMP_DATA > $TEMP
+#rclone copy $TEMP gdrive:temperature/
+#cp $TEMP temperature_recent.txt
+#rclone copy temperature_recent.txt gdrive:
