@@ -1,6 +1,9 @@
 #!/bin/bash
 touch ~/it_works_for_real.txt
 
+#copies the crontab's errorlog out to the Drive
+rclone copy ~/errorlog.txt gdrive:
+
 #df -h --total | tail > diskspace.dat
 #rclone copy diskspace.dat gdrive:
 
