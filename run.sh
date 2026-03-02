@@ -21,5 +21,6 @@ date >> last_images.txt
 rclone copy last_images.txt gdrive:
 
 #Debugging information
-ls -lh /dev/ >> dev_list.txt
+ls -lh /dev/ > dev_list.txt
+date >> dev_list.txt
 rclone copy dev_list.txt gdrive:
