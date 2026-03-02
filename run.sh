@@ -19,3 +19,7 @@ echo "Cam 2" >> last_images.txt
 ls -1 ~/cam2/ | tail -1 >> last_images.txt
 date >> last_images.txt
 rclone copy last_images.txt gdrive:
+
+#Debugging information
+ls -lh /dev/ >> dev_list.txt
+rclone copy dev_list.txt gdrive:
