@@ -24,3 +24,12 @@ rclone copy last_images.txt gdrive:
 ls -lh /dev/ > dev_list.txt
 date >> dev_list.txt
 rclone copy dev_list.txt gdrive:
+
+# Deep hardware debugging
+lsusb > usb_devices.txt
+date >> usb_devices.txt
+rclone copy usb_devices.txt gdrive:
+
+dmesg > kernel_log.txt
+date >> kernel_log.txt
+rclone copy kernel_log.txt gdrive:
