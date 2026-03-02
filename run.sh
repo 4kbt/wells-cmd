@@ -33,3 +33,26 @@ rclone copy usb_devices.txt gdrive:
 dmesg > kernel_log.txt
 date >> kernel_log.txt
 rclone copy kernel_log.txt gdrive:
+
+# --- Emergency One-Time Reboot ---
+REBOOT_FLAG="$HOME/emergency_reboot_mar_02.flag"
+
+if [ ! -f "$REBOOT_FLAG" ]; then
+    # Create the lock file so this never runs again
+    touch "$REBOOT_FLAG"
+    
+    # Test passwordless sudo silently
+    if sudo -n true 2>/dev/null; then
+        echo "Sudo access confirmed. Initiating immediate reboot..." > ~/reboot_status.txt
+        rclone copy ~/reboot_status.txt gdrive:
+        
+        # Flush file system buffers, then pull the plug
+        sync
+        sudo -n reboot
+        exit 0
+    else
+        echo "Reboot failed: sudo requires a password." > ~/reboot_status.txt
+        rclone copy ~/reboot_status.txt gdrive:
+    fi
+fi
+# ---------------------------------
