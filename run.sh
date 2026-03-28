@@ -35,7 +35,7 @@ date >> kernel_log.txt
 rclone copy kernel_log.txt gdrive:
 
 # --- Emergency One-Time Reboot ---
-REBOOT_FLAG="$HOME/emergency_reboot_mar_02.flag"
+REBOOT_FLAG="$HOME/emergency_reboot_mar_27.flag"
 
 if [ ! -f "$REBOOT_FLAG" ]; then
     # Create the lock file so this never runs again
