@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export RCLONE_DRIVE_TEAM_DRIVE="0AB3QL-gKenOsUk9PVA"
+
 DATE=`date -Iseconds`
 
 CAM1="cam1/${DATE}_cam_1_wells.jpg"
