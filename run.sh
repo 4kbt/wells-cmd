@@ -1,4 +1,6 @@
 #!/bin/bash
+export RCLONE_DRIVE_TEAM_DRIVE="0AB3QL-gKenOsUk9PVA"
+
 touch ~/it_works_for_real.txt
 
 #copies the crontab's errorlog out to the Drive
